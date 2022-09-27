@@ -15,9 +15,8 @@ int find_motive(std::string &filepath){
 
 using namespace std;
 
-int CheckWord(char* filename, char* search)
+int CheckWord(std::string filename, std::string search)
 {
-    int offset; 
     string line;
     ifstream Myfile;
     int found = 0;
@@ -28,8 +27,6 @@ int CheckWord(char* filename, char* search)
     {
         while (!Myfile.eof())
         {
-            //getline(Myfile,line);
-            //if ((offset = line.find(search, 0)) != string::npos) 
             while(Myfile >> word)
             {
                 if(word == search)
@@ -37,19 +34,19 @@ int CheckWord(char* filename, char* search)
             }
         }
         Myfile.close();
-        printf("The file %s contains %d words containing the motive %s\n", filename, found, search);
+        printf("The file %s contains %d words containing the motive %s\n", filename.c_str(), found, search.c_str());
         return 0;
     }
     else
         {
-            printf("The file *input-file-path* could not be opened.");
+            printf("The file %s could not be opened.\n", filename.c_str());
             return 1;
         }
 }
 
 
 int main () 
-{    
-    CheckWord("../test.txt", "rose");    
+{
+    CheckWord("/Users/zaki/CPP_apping/find_motive/test.txt", "rose");    
     return 0;
 }
