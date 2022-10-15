@@ -3,17 +3,15 @@
 
 bool is_prime(int x)
 {
-    if (x==0)
-        return true;
-    if (x==1)
-        return true;
+    if (x==0 || x == 1)
+        return false ;
     for ( int i =2; i<x; i++)
     {
         if(x%i == 0)
             return false;
     }
     return true;
-}
+}@
 int main(int argc, char* argv[])
 {
     if(argc == 1)
