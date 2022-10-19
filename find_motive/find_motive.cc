@@ -43,10 +43,14 @@ int CheckWord(std::string filename, std::string search)
             return 1;
         }
 }
-
-
-int main () 
+int main (int argc, char *argv[]) 
 {
-    CheckWord("/Users/zaki/CPP_apping/find_motive/test.txt", "rose");    
-    return 0;
+    if (argc != 3) 
+    {
+        std::cout << "Please provide both filename and motive" << std::endl;
+        return 0;
+    }
+    CheckWord(argv[1], argv[2]);
+    return 1;
 }
+
