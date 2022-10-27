@@ -1,56 +1,28 @@
-/*#include <ofstream>
-#include <ifstream>
-
-int find_motive(std::string &filepath){
-    ifstream myfile;
-    myfile.open(filepath);
-    if(myfile){
-        int count 
-    }
-}*/
-
 #include <iostream>
 #include <fstream>
-#include <string>
-
 using namespace std;
 
-int CheckWord(std::string filename, std::string search)
+int main(int argc, char *argv[])
 {
-    string line;
-    ifstream Myfile;
-    int found = 0;
+
+    ifstream file;
+    file.open (argv[1]);
+    if (!file) {
+        cout << "The file " << argv[1] << " could not be opened.";
+        return 1;
+    }
+
+    int occ = 0;
     string word;
-    Myfile.open (filename);
-
-    if (Myfile.is_open())
-    {
-        while (!Myfile.eof())
-        {
-            while(Myfile >> word)
-            {
-                if(word == search)
-                    found += 1;
-            }
+    while (file >> word) {
+        int i = 0;
+        if (word.find(argv[2]) != std::string::npos) {
+            occ++;
         }
-        Myfile.close();
-        printf("The file %s contains %d words containing the motive %s\n", filename.c_str(), found, search.c_str());
-        return 0;
     }
-    else
-        {
-            printf("The file %s could not be opened.\n", filename.c_str());
-            return 1;
-        }
-}
-int main (int argc, char *argv[]) 
-{
-    if (argc != 3) 
-    {
-        std::cout << "Please provide both filename and motive" << std::endl;
-        return 0;
-    }
-    CheckWord(argv[1], argv[2]);
-    return 1;
-}
 
+    cout << "The file " << argv[1] << " contains "<< occ << " words containing the motive "<< argv[2];
+
+    file.close();
+    return 0;
+}
