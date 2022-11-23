@@ -27,8 +27,6 @@ long long int is_prime(long long int n)
 
 int main(int argc, char *argv[])
 {
-    if(argc < 3){
-	    return 0}
     
     long long int n;
     
