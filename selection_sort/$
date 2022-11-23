@@ -1,0 +1,31 @@
+#include <my_sort.hpp>
+void swap(auto *xp, auto *yp)
+{
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
+
+
+template<class CONT>
+void selection_sort(CONT begin, CONT end){
+    unsigned size = end - begin;
+    if (size == 0)
+    {
+        return;
+    }
+
+    for (unsigned index = 0; index !=end; index++)
+    {
+        unsigned pos_min = index;
+	for(index_bis = index; index_bis!=end; index_bis++)
+	{
+		if (*index_bis < *pos_min){
+			pos_min = index_bis;
+		}
+	}
+	swap(*index, *pos_min);
+
+
+    }
+}
